@@ -1,9 +1,11 @@
 package weatherApp.view;
 
+import com.vaadin.server.ClassResource;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -16,6 +18,7 @@ public class MainView extends UI {
 	protected void init(VaadinRequest request) {
 		mainLayout();
 		setHeader();
+		setLogo();
 		
 	}
 	
@@ -36,5 +39,16 @@ public class MainView extends UI {
 		mainLayout.addComponents(header);
 	}
 	
+	private void setLogo(){
+		HorizontalLayout logo = new HorizontalLayout();
+		logo.setDefaultComponentAlignment(Alignment.TOP_CENTER);
+		logo.setWidth("400px");
+		logo.setHeight("400px");
+		Image img = new Image(null, new ClassResource("/logo.jpg"));
+		
+		logo.addComponent(img);
+		
+		mainLayout.addComponents(logo);
+	}
 	
 }
