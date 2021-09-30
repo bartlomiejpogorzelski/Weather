@@ -2,10 +2,14 @@ package weatherApp.view;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.parsing.Location;
+
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.ClassResource;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
@@ -24,6 +28,7 @@ public class MainView extends UI {
 		setHeader();
 		setLogo();
 		setForm();
+		dashboardTitle();
 		
 	}
 	
@@ -74,9 +79,31 @@ public class MainView extends UI {
 		TextField cityText = new TextField();
 		cityText.setWidth("70px");
 		
+		
+		Button searchButton = new Button();
+		searchButton.setIcon(VaadinIcons.SEARCH);
+		
+		
 		form.addComponents(cityText);
 		form.addComponents(unitSelect);
+		form.addComponents(searchButton);
 		mainLayout.addComponents(form);
 		
+	}
+	
+	private void dashboardTitle() {
+		HorizontalLayout dashboardLayout = new HorizontalLayout();
+		dashboardLayout.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
+		
+		Label location = new Label("Place to show: ");
+		location.addStyleName(ValoTheme.LABEL_H2);
+        location.addStyleName(ValoTheme.LABEL_LIGHT);
+        
+        Label currentTemp = new Label("20C");
+        currentTemp.setStyleName(ValoTheme.LABEL_BOLD);
+        currentTemp.setStyleName(ValoTheme.LABEL_H1);
+        
+        dashboardLayout.addComponents(location,currentTemp);
+        mainLayout.addComponents(dashboardLayout);
 	}
 }
