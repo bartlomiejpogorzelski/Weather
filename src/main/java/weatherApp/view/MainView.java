@@ -10,6 +10,7 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.NativeSelect;
+import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
@@ -69,6 +70,11 @@ public class MainView extends UI {
 		
 		unitSelect.setItems(items);
 		unitSelect.setValue(items.get(0));
+		
+		TextField cityText = new TextField();
+		cityText.setWidth("70px");
+		
+		form.addComponents(cityText);
 		form.addComponents(unitSelect);
 		mainLayout.addComponents(form);
 		
