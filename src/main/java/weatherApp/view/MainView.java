@@ -1,5 +1,7 @@
 package weatherApp.view;
 
+import java.util.ArrayList;
+
 import com.vaadin.server.ClassResource;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
@@ -7,6 +9,7 @@ import com.vaadin.ui.Alignment;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.NativeSelect;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
@@ -19,6 +22,7 @@ public class MainView extends UI {
 		mainLayout();
 		setHeader();
 		setLogo();
+		setForm();
 		
 	}
 	
@@ -31,7 +35,7 @@ public class MainView extends UI {
 	
 	private void setHeader(){
 		HorizontalLayout header = new HorizontalLayout();
-		header.setDefaultComponentAlignment(Alignment.BOTTOM_CENTER);
+		header.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
 		Label title = new Label("Simple Weather APP");
 		title.addStyleName(ValoTheme.LABEL_BOLD);
 		header.addComponent(title);
@@ -41,9 +45,9 @@ public class MainView extends UI {
 	
 	private void setLogo(){
 		HorizontalLayout logo = new HorizontalLayout();
-		logo.setDefaultComponentAlignment(Alignment.TOP_CENTER);
-		logo.setWidth("400px");
-		logo.setHeight("400px");
+		logo.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
+		logo.setWidth("200px");
+		logo.setHeight("200px");
 		Image img = new Image(null, new ClassResource("/logo.jpg"));
 		
 		logo.addComponent(img);
@@ -51,4 +55,22 @@ public class MainView extends UI {
 		mainLayout.addComponents(logo);
 	}
 	
+	private void setForm(){
+		HorizontalLayout form = new HorizontalLayout();
+		form.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
+		form.setMargin(true);
+		form.setSpacing(true);
+		
+		NativeSelect<String> unitSelect = new NativeSelect<>();
+		unitSelect.setHeight("60px");
+		ArrayList<String> items = new ArrayList<>();
+		items.add("C");
+		items.add("F");
+		
+		unitSelect.setItems(items);
+		unitSelect.setValue(items.get(0));
+		form.addComponents(unitSelect);
+		mainLayout.addComponents(form);
+		
+	}
 }
